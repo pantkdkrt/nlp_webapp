@@ -64,7 +64,7 @@ function Home() {
         }}
       >
         <h2>1. Word Segmentation</h2>
-        <Col lg={6}>
+        <Col lg={5}>
           <Form>
             <Form.Group
               className="mb-3"
@@ -82,10 +82,10 @@ function Home() {
             <Button onClick={createPost}>Go</Button>
           </Form>
         </Col>
-        <Col lg={6}>
-          <Card>
+        <Col lg={7}>
+          <Card className="output-card-1">
             <Card.Header>Output</Card.Header>
-            <Card.Body>
+            <Card.Body style={{height: "10rem",overflowY: "auto"}}>
               {post &&
                 post.map((v, i) => (
                   <span
@@ -133,7 +133,7 @@ function Home() {
         <Col lg={6}>
           <Card>
             <Card.Header>Output</Card.Header>
-            <Card.Body>
+            <Card.Body style={{height: "10rem",overflowY: "auto"}}>
               {post2 &&
                 post2.map((v, i) => (
                   <span
@@ -181,7 +181,7 @@ function Home() {
         <Col lg={6}>
           <Card>
             <Card.Header>Output</Card.Header>
-            <Card.Body>
+            <Card.Body style={{height: "10rem",overflowY: "auto"}}>
               {post3 &&
                 post3.map((v, i) => (
                   <span
@@ -230,7 +230,7 @@ function Home() {
         <Col lg={6}>
           <Card>
             <Card.Header>Output</Card.Header>
-            <Card.Body></Card.Body>
+            <Card.Body style={{height: "10rem",overflowY: "auto"}}></Card.Body>
           </Card>
         </Col>
       </Row>
