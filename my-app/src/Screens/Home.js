@@ -14,6 +14,7 @@ function Home() {
   const [post2, setPost2] = useState();
 
 
+
   function createPost() {
     axios
       .post(baseURLTask1, {
@@ -31,7 +32,7 @@ function Home() {
   function createPost2() {
     axios
       .post(baseURLTask2, {
-        title: TextInputPOS,
+        sentence: TextInputPOS,
        
       })
       .then((response) => {
@@ -43,7 +44,7 @@ function Home() {
 
   return (
     <Container fluid>
-      <Row style={{ backgroundColor: "#DABBFF" }}>
+      <Row style={{ backgroundColor: "#DABBFF",  }}>
         <Col>
           <h1>APIs Demo</h1>
         </Col>
