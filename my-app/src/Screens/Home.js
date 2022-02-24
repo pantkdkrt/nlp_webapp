@@ -5,6 +5,7 @@ import { Container, Form, Button, Row, Col, Card } from "react-bootstrap";
 const baseURLTask1 = "http://nlp1.the-scamper.superai.me:10100/word";
 const baseURLTask2 = "http://nlp1.the-scamper.superai.me:10200/pos";
 const baseURLTask3 = "http://nlp1.the-scamper.superai.me:10300/ner";
+const baseURLTask4 = "http://nlp1.the-scamper.superai.me:10400/sentence";
 
 function Home() {
   const [TextInputWS, setTextInputWS] = useState();
@@ -15,6 +16,7 @@ function Home() {
   const [post2, setPost2] = useState();
   const [post3, setPost3] = useState();
   const [post4, setPost4] = useState();
+  const [post5, setPost5] = useState();
   const [TxtFile, setTxtFile] = useState();
   const [TxtFile2, setTxtFile2] = useState();
 
@@ -118,6 +120,17 @@ function Home() {
 
     setPost4(output.reverse());
     console.log(post4);
+  }
+
+  function createPost4() {
+    axios
+      .post(baseURLTask4, {
+        sentence: TextInputSS,
+      })
+      .then((response) => {
+        setPost5(response.data);
+      });
+    console.log(post5);
   }
 
   return (
@@ -288,27 +301,25 @@ function Home() {
           </Form>
         </Col>
         <Col lg={6}>
-        <Card >
+          <Card>
             <Card.Header>Output from Textarea</Card.Header>
             <Card.Body style={{ height: "10rem", overflowY: "auto" }}>
               {post3 &&
-                post3.map((v, i) =>
-                    <span
-                      style={{
-                        margin: "1rem",
-                        padding: "0.5rem",
-                        backgroundColor: "#EEBFFF",
-                      }}
-                      key={i}
-                    >
-                      {v[0] + ' : ' + v[1]}
-                    </span>
-                
-                )}
+                post3.map((v, i) => (
+                  <span
+                    style={{
+                      margin: "1rem",
+                      padding: "0.5rem",
+                      backgroundColor: "#EEBFFF",
+                    }}
+                    key={i}
+                  >
+                    {v[0] + " : " + v[1]}
+                  </span>
+                ))}
             </Card.Body>
           </Card>
-
-          <Card style={{marginTop: '1rem'}}>
+          <Card style={{ marginTop: "1rem" }}>
             <Card.Header>Output from file</Card.Header>
             <Card.Body style={{ height: "10rem", overflowY: "auto" }}>
               {post4 &&
@@ -322,7 +333,7 @@ function Home() {
                       }}
                       key={b}
                     >
-                      {a[0] + ' : ' + a[1]}
+                      {a[0] + " : " + a[1]}
                     </span>
                   ))
                 )}
@@ -354,15 +365,44 @@ function Home() {
                 }}
               />
             </Form.Group>
-            <Button>Go</Button>
+            <Button onClick={createPost4}>Go</Button>
           </Form>
         </Col>
         <Col lg={6}>
           <Card>
             <Card.Header>Output</Card.Header>
-            <Card.Body
-              style={{ height: "10rem", overflowY: "auto" }}
-            ></Card.Body>
+            <Card.Body style={{ height: "10rem", overflowY: "auto" }}>
+              {post5 &&
+                post5.sentence.map((v, i) => (
+                  <span
+                    style={{
+                      margin: "1rem",
+                      padding: "0.5rem",
+                      backgroundColor: "#EEBFFF",
+                    }}
+                    key={i}
+                  >
+                   {i+1}) {v}
+                  </span>
+                ))}
+             
+               
+            </Card.Body>
+            <Card.Body style={{ height: "10rem", overflowY: "auto" }}>
+            {post5 &&
+                post5.labels.map((v, i) => (
+                  <span
+                    style={{
+                      margin: "1rem",
+                      padding: "0.5rem",
+                      backgroundColor: "#EEBFFF",
+                    }}
+                    key={i}
+                  >
+                   {i+1}) {v}
+                  </span>
+                ))} 
+            </Card.Body>
           </Card>
         </Col>
       </Row>
