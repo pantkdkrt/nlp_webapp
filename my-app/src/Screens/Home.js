@@ -3,6 +3,7 @@ import axios from "axios";
 import { Container, Form, Button, Row, Col, Card } from "react-bootstrap";
 //const baseURL = "http://127.0.0.1:5000";
 const baseURLTask1 = "http://nlp1.the-scamper.superai.me:10100/word";
+const baseURLTask2 = "http://nlp1.the-scamper.superai.me:10200/pos";
 
 function Home() {
   const [TextInputWS, setTextInputWS] = useState();
@@ -10,7 +11,7 @@ function Home() {
   const [TextInputNER, setTextInputNER] = useState();
   const [TextInputPOS, setTextInputPOS] = useState();
   const [post, setPost] = useState();
-
+  const [post2, setPost2] = useState();
 
 
   function createPost() {
@@ -27,6 +28,18 @@ function Home() {
   }
 
   //if (!post) return null;
+  function createPost2() {
+    axios
+      .post(baseURLTask2, {
+        title: TextInputPOS,
+       
+      })
+      .then((response) => {
+      
+        setPost2(response.data);
+      });
+      console.log(post2)
+  }
 
   return (
     <Container fluid>
@@ -172,25 +185,17 @@ function Home() {
                 }}
               />
             </Form.Group>
-            <Button>Go</Button>
+            <Button onClick={createPost2}>Go</Button>
           </Form>
-          <Container>{TextInputPOS}</Container>
         </Col>
         <Col>
+       
           <Card>
             <Card.Header>Output</Card.Header>
             <Card.Body>
-              <blockquote className="blockquote mb-0">
-                <p>
-                  {" "}
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer posuere erat a ante.{" "}
-                </p>
-                <footer className="blockquote-footer">
-                  Someone famous in{" "}
-                  <cite title="Source Title">Source Title</cite>
-                </footer>
-              </blockquote>
+            {post2 && post2.map((v,i) => (
+                <span style={{margin: '1rem', padding: '0.5rem', backgroundColor: "#EEBFFF"}} key={i}>{v}</span>
+              ))}
             </Card.Body>
           </Card>
         </Col>
