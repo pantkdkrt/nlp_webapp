@@ -44,13 +44,13 @@ function Home() {
 
   return (
     <Container fluid>
-      <Row style={{ backgroundColor: "#DABBFF",  }}>
+      <Row style={{ backgroundColor: "#DABBFF" }}>
         <Col>
           <h1>APIs Demo</h1>
         </Col>
       </Row>
       <Row
-        style={{ padding: "1rem", height: "18rem", backgroundColor: "#B7F0FF" }}
+        style={{ padding: "1rem", height: "30rem", backgroundColor: "#B7F0FF", maxHeight: "35rem"  }}
       >
         <h2>1. Word Segmentation</h2>
         <Col lg={6}>
@@ -84,10 +84,10 @@ function Home() {
         </Col>
       </Row>
       <Row
-        style={{ padding: "1rem", height: "18rem", backgroundColor: "#C2FFAC" }}
+        style={{ padding: "1rem", height: "30rem", backgroundColor: "#C2FFAC", maxHeight: "35rem"  }}
       >
         <h2>2. Sentence Segmentation</h2>
-        <Col>
+        <Col lg={6}>
           <Form>
             <Form.Group
               className="mb-3"
@@ -106,30 +106,20 @@ function Home() {
           </Form>
           <Container>{TextInputSS}</Container>
         </Col>
-        <Col>
+        <Col lg={6}>
           <Card>
             <Card.Header>Output</Card.Header>
             <Card.Body>
-              <blockquote className="blockquote mb-0">
-                <p>
-                  {" "}
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer posuere erat a ante.{" "}
-                </p>
-                <footer className="blockquote-footer">
-                  Someone famous in{" "}
-                  <cite title="Source Title">Source Title</cite>
-                </footer>
-              </blockquote>
+      
             </Card.Body>
           </Card>
         </Col>
       </Row>
       <Row
-        style={{ padding: "1rem", height: "18rem", backgroundColor: "#FFC3F3" }}
+        style={{ padding: "1rem", height: "30rem", backgroundColor: "#FFC3F3",maxHeight: "35rem"  }}
       >
         <h2>3. NER Tagging</h2>
-        <Col>
+        <Col lg={6}>
           <Form>
             <Form.Group
               className="mb-3"
@@ -148,30 +138,20 @@ function Home() {
           </Form>
           <Container>{TextInputNER}</Container>
         </Col>
-        <Col>
+        <Col lg={6}>
           <Card>
             <Card.Header>Output</Card.Header>
             <Card.Body>
-              <blockquote className="blockquote mb-0">
-                <p>
-                  {" "}
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer posuere erat a ante.{" "}
-                </p>
-                <footer className="blockquote-footer">
-                  Someone famous in{" "}
-                  <cite title="Source Title">Source Title</cite>
-                </footer>
-              </blockquote>
+           
             </Card.Body>
           </Card>
         </Col>
       </Row>
       <Row
-        style={{ padding: "1rem", height: "18rem", backgroundColor: "#FFD7C3" }}
+        style={{ padding: "1rem", height: "30rem", backgroundColor: "#FFD7C3", maxHeight: "35rem" }}
       >
         <h2>4. POS Tagging</h2>
-        <Col>
+        <Col lg={6}>
           <Form>
             <Form.Group
               className="mb-3"
@@ -189,7 +169,7 @@ function Home() {
             <Button onClick={createPost2}>Go</Button>
           </Form>
         </Col>
-        <Col>
+        <Col lg={6}>
        
           <Card>
             <Card.Header>Output</Card.Header>
