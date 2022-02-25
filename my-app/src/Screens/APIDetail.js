@@ -25,6 +25,14 @@ function APIDetail() {
   .then((response) => {
     setPost(response.data);
   });`;
+  const ex4_1 = `axios
+  .post(baseURLTask4, {
+    sentence: TextInputSS,
+  })
+  .then((response) => {
+    setPost(response.data);
+  });`;
+
   return (
     <Container fluid>
       <Row style={{ backgroundColor: "#DABBFF" }}>
@@ -135,6 +143,42 @@ function APIDetail() {
           <Image
             fluid
             src={require("../Img/task-3-img.png")}
+            style={{ width: "40rem" }}
+            thumbnail
+          />
+        </Col>
+      </Row>
+      <Row
+        style={{
+          padding: "1rem",
+          height: "35rem",
+          backgroundColor: "#C2FFAC",
+          maxHeight: "45rem",
+        }}
+      >
+         <Col lg={6}>
+          <h3>Sentence Segmentation</h3>
+          <span>http://nlp1.the-scamper.superai.me:10400/sentence</span>
+          <br />
+          <span>
+            <b>Input:</b> json
+          </span>
+          <br />
+          <i>Example:</i>
+          <span>{ex2}</span>
+          <br />
+          <span>using Axios</span>
+          <br />
+          <span>{ex4_1}</span>
+          <br />
+          <span>
+            <b>Output:</b> json
+          </span>
+        </Col>
+        <Col lg={6} md={6} sm={12}>
+          <Image
+            fluid
+            src={require("../Img/task-4-img.png")}
             style={{ width: "40rem" }}
             thumbnail
           />

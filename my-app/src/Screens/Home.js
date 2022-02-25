@@ -17,8 +17,10 @@ function Home() {
   const [post3, setPost3] = useState();
   const [post4, setPost4] = useState();
   const [post5, setPost5] = useState();
+  const [post6, setPost6] = useState();
   const [TxtFile, setTxtFile] = useState();
   const [TxtFile2, setTxtFile2] = useState();
+  const [TxtFile3, setTxtFile3] = useState();
 
   const showFile = (e) => {
     e.preventDefault();
@@ -61,6 +63,25 @@ function Home() {
     reader.readAsText(e.target.files[0]);
   };
 
+  const showFile3 = (e) => {
+    e.preventDefault();
+    //setTxtFileName(e.target.files[0].name)
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const text = e.target.result.replace(/ /g, "");
+      const text2 = text.split("\n"); //.replace(/(\r\n|\n|\r)/gm," ");
+      const text3 = text2.toString();
+      const text4 = text3.split(",");
+      console.log(text3);
+
+      const long = splitArrayIntoChunksOfLen(text4, 50);
+      setTxtFile3(text4);
+
+      console.log(text2);
+    };
+    reader.readAsText(e.target.files[0]);
+  };
+  
   function createPost() {
     axios
       .post(baseURLTask1, {
@@ -133,6 +154,19 @@ function Home() {
     console.log(post5);
   }
 
+  function createPost42() {
+    axios
+    .post(baseURLTask4, {
+      sentence: TxtFile3,
+    })
+    .then((response) => {
+      setPost6(response.data);
+    });
+  console.log(post6);
+ 
+  
+  }
+
   return (
     <Container fluid>
       <Row style={{ backgroundColor: "#DABBFF" }}>
@@ -181,18 +215,7 @@ function Home() {
                     }}
                     key={i}
                   >
-                    {v.map((a, b) => (
-                      <span
-                        style={{
-                          margin: "1rem",
-                          padding: "0.5rem",
-                          backgroundColor: "#EEBFFF",
-                        }}
-                        key={b}
-                      >
-                        {a[0]}:{a[1]}
-                      </span>
-                    ))}
+                    {v}
                   </span>
                 ))}
             </Card.Body>
@@ -202,9 +225,9 @@ function Home() {
       <Row
         style={{
           padding: "1rem",
-          height: "30rem",
+          height: "50rem",
           backgroundColor: "#FFD7C3",
-          maxHeight: "35rem",
+          maxHeight: "55rem",
         }}
       >
         <h2>2. POS Tagging</h2>
@@ -263,9 +286,9 @@ function Home() {
       <Row
         style={{
           padding: "1rem",
-          height: "35rem",
+          height: "55rem",
           backgroundColor: "#FFC3F3",
-          maxHeight: "40rem",
+          maxHeight: "60rem",
         }}
       >
         <h2>3. NER Tagging</h2>
@@ -344,9 +367,9 @@ function Home() {
       <Row
         style={{
           padding: "1rem",
-          height: "30rem",
+          height: "50rem",
           backgroundColor: "#C2FFAC",
-          maxHeight: "35rem",
+          maxHeight: "55rem",
         }}
       >
         <h2>4. Sentence Segmentation</h2>
@@ -367,13 +390,26 @@ function Home() {
             </Form.Group>
             <Button onClick={createPost4}>Go</Button>
           </Form>
+          <Form>
+            <Form.Group controlId="formFileLg" className="mb-3">
+              <Form.Label>Please upload your text file.</Form.Label>
+              <Form.Control
+                type="file"
+                size="lg"
+                onChange={showFile3}
+                multiple={false}
+              />
+            </Form.Group>
+
+            <Button onClick={createPost42}>Go</Button>
+          </Form>
         </Col>
         <Col lg={6}>
           <Card>
             <Card.Header>Output</Card.Header>
             <Card.Body style={{ height: "10rem", overflowY: "auto" }}>
-              {post5 &&
-                post5.sentence.map((v, i) => (
+              {post6 &&
+                post6.sentence.map((v, i) => (
                   <span
                     style={{
                       margin: "1rem",
@@ -388,9 +424,14 @@ function Home() {
              
                
             </Card.Body>
+        
+          </Card>
+          <Card>
+            <Card.Header>Output</Card.Header>
+          
             <Card.Body style={{ height: "10rem", overflowY: "auto" }}>
-            {post5 &&
-                post5.labels.map((v, i) => (
+            {post6 &&
+                post6.labels.map((v, i) => (
                   <span
                     style={{
                       margin: "1rem",
