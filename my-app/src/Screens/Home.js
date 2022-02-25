@@ -367,9 +367,9 @@ function Home() {
       <Row
         style={{
           padding: "1rem",
-          height: "50rem",
+          height: "80rem",
           backgroundColor: "#C2FFAC",
-          maxHeight: "55rem",
+          maxHeight: "85rem",
         }}
       >
         <h2>4. Sentence Segmentation</h2>
@@ -406,7 +406,43 @@ function Home() {
         </Col>
         <Col lg={6}>
           <Card>
-            <Card.Header>Output</Card.Header>
+            <Card.Header>Output from Texarea</Card.Header>
+            <Card.Body style={{ height: "10rem", overflowY: "auto" }}>
+              {post5 &&
+                post5.sentence.map((v, i) => (
+                  <span
+                    style={{
+                      margin: "1rem",
+                      padding: "0.5rem",
+                      backgroundColor: "#EEBFFF",
+                    }}
+                    key={i}
+                  >
+                   {i+1}) {v}
+                  </span>
+                ))
+                }
+             </Card.Body>
+             <Card.Body style={{ height: "10rem", overflowY: "auto" }}>
+              {post5 &&
+                post5.sentence.map((v, i) => (
+                  <span
+                    style={{
+                      margin: "1rem",
+                      padding: "0.5rem",
+                      backgroundColor: "#EEBFFF",
+                    }}
+                    key={i}
+                  >
+                   {i+1}) {v}
+                  </span>
+                ))}
+              
+            </Card.Body>
+        
+          </Card>
+          <Card>
+            <Card.Header>Output from File</Card.Header>
             <Card.Body style={{ height: "10rem", overflowY: "auto" }}>
               {post6 &&
                 post6.sentence.map((v, i) => (
@@ -423,12 +459,7 @@ function Home() {
                 ))}
              
                
-            </Card.Body>
-        
-          </Card>
-          <Card>
-            <Card.Header>Output</Card.Header>
-          
+            </Card.Body> 
             <Card.Body style={{ height: "10rem", overflowY: "auto" }}>
             {post6 &&
                 post6.labels.map((v, i) => (
